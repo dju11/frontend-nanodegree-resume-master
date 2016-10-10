@@ -1,4 +1,9 @@
 
+// define the objects first. then write in the display functions, then call the display functions last.
+
+
+function displayWork() {
+
 var bio = { 
 	"name": "Daniel Underhill", 
 	"role": "Web Developer",
@@ -8,36 +13,25 @@ var bio = {
 		"Github": "%githuburl%",
 		"location": "Massachusetts"},
 	"welcome message": "Hello and welcome to my interactive resume",
-	"skills": ['karate', 'singing', 'shuffle dancing', 'producing crap music'],
+	"skills": ['karate', 'singing', 'shuffle dancing', 'producing crap music', 'typng errirs'],
 	"biopic": "images/fry.jpg"
 };
 
+
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 $('#header').append(formattedName);
+
+
 
 if (bio.skills.length > 0){ 
 
 	$('#header').append(HTMLskillsStart);
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+	for (var i = 0; i < bio.skills.length; i++) { 
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
 	$('#skills').append(formattedSkill);
-
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]); 
-	$('#skills').append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	$('#skills').append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-	$('skills').append(formattedSkill); 
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-	$('skills').append(formattedSkill); 
-	};
-
-
-
+	}
+}; 	
 
 
 
@@ -80,9 +74,23 @@ for (job in work.jobs){
 
 	$(".work-entry:last").append(formattedEmployerTitle); 
 
+	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	$(".work-entry:last").append(formattedDates); 
+
+	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description); 
+	$(".work-entry:last").append(formattedDescription); 
+
 	};
 
+// use a for loop or a forEach loop 
 
+// work.jobs.forEach(function(job){
+// 	$("#workExperience").append(HTMLworkStart); 
+
+// 	var formattedDescription = HTMLworkDescription.replace("%data%", work.job.description);
+// 	$(".work-entry:last").append(formattedDescription); 
+	
+// }); 
 
 // var projects = {
 // 	"projects": [
@@ -121,7 +129,7 @@ for (job in work.jobs){
 // 	"school": "Udacity",
 // 	"dates": "2015", 
 // 	"url": "N/A"
-// 	},
+// 	},e
 
 // 	{
 // 	"title": "Obejct Oriented JavaScript", 
@@ -132,6 +140,64 @@ for (job in work.jobs){
 
 // 	] 
 // } 
+
+
+
+
+
+
+
+
+
+function inName(name){ 
+
+	var names = bio.name.trim().split(" ");
+	//split method created an 2 item array with the first/last name that were taken as name property of the bio object
+	names[1] = names[1].toUpperCase(); 
+	names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase(); 
+
+	// var newName = names.join(""); 
+
+	return names[0]+" "+names[1]; 
+
+
+	console.log(name); 
+};
+
+inName(); 
+
+
+$('#main').append(internationalizeButton);
+
+
+
+
+
+// var name = "AlbERt EINstEiN";
+
+// function nameChanger(oldName) {
+//     var finalName = oldName;
+//     // Your code goes here!
+//     var names = oldName.split(" ");
+    
+//     names[1]=names[1].toUpperCase;
+//     names[0]=names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase(); 
+    
+//     var finalName = names.join("");
+    
+    
+    
+//     // Don't delete this line!
+//     return finalName;
+// };
+
+// // Did your code work? The line below will tell you!
+// console.log(nameChanger(name));
+
+};
+
+displayWork(); 
+
 
 
 
