@@ -92,16 +92,24 @@ for (job in work.jobs){
 	
 // }); 
 
-// var projects = {
-// 	"projects": [
-// 		{
-// 			"title": "Portfolio Project",
-// 			"dates": "May 2015 - August 2016",
-// 			"description": "An interactive and responsive web page with examples of student work built using the Bootstrap framework.",
-// 			"images": "https://github.com/dju11/Project-1---Trial-Portfolio-.git"
-// 		}
-// 	]
-// }
+var projects = {
+	"projects": [
+		{
+			"title": "Portfolio Project",
+			"dates": "May 2015 - August 2016",
+			"description": "An interactive and responsive web page with examples of student work built using the Bootstrap framework.",
+			"images": "https://github.com/dju11/Project-1---Trial-Portfolio-.git"
+		},
+
+		{
+			"title": "Second Project",
+			"dates": "September 2016 - October 2016",
+			"description": "A personal project aimed at a human that is not far from the plot of film, Cruel Intentions.",
+			"images": "https://somewebsitethat is yet to be determined"
+		}
+
+	]
+}
 
 
 // var education = {
@@ -146,53 +154,62 @@ for (job in work.jobs){
 
 
 
+// function inName(){ 
 
+// 	// var name = bio.name.trim().split(" ");
+// 	//split method created an 2 item array with the first/last name that were taken as name property of the bio object
+	
 
+// 	var name = name.trim().split(" ");
+// 	console.log(name); 
 
-function inName(name){ 
+// 	name[1] = name[1].toUpperCase(); 
+// 	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase(); 
 
-	var names = bio.name.trim().split(" ");
-	//split method created an 2 item array with the first/last name that were taken as name property of the bio object
-	names[1] = names[1].toUpperCase(); 
-	names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase(); 
+// 	return name[0]+" "+name[1];
 
-	// var newName = names.join(""); 
+	
 
-	return names[0]+" "+names[1]; 
-
-
-	console.log(name); 
-};
-
-inName(); 
-
-
-$('#main').append(internationalizeButton);
-
-
-
-
-
-// var name = "AlbERt EINstEiN";
-
-// function nameChanger(oldName) {
-//     var finalName = oldName;
-//     // Your code goes here!
-//     var names = oldName.split(" ");
-    
-//     names[1]=names[1].toUpperCase;
-//     names[0]=names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase(); 
-    
-//     var finalName = names.join("");
-    
-    
-    
-//     // Don't delete this line!
-//     return finalName;
 // };
 
-// // Did your code work? The line below will tell you!
-// console.log(nameChanger(name));
+// var name = $("#name").text(); 
+
+
+// $('#main').append(internationalizeButton);
+
+
+
+// I changed the code slightly:
+function inName(){
+bio.name = bio.name.trim().split(" ");
+console.log(bio.name);
+bio.name[0] = bio.name[0].slice(0,1).toUpperCase() + bio.name[0].slice(1).toLowerCase();
+bio.name[1] = bio.name[1].toUpperCase();
+
+bio.name = bio.name.join(" ");
+return bio.name;
+};
+
+inName();
+$("#main").append(internationalizeButton);
+
+
+
+projects.display() { 
+	for(project in projects)
+	$("#projects").append(HTMLprojectStart);
+
+
+
+
+
+
+}
+
+
+
+
+
 
 };
 

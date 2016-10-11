@@ -66,7 +66,9 @@ $(document).ready(function() {
   $('button').click(function() {
     var $name = $('#name');
     var iName = inName($name.text()) || function(){};
+    //note the .text() either sets or returns the text content of the selected elements 
     $name.html(iName);
+    //the .html() method sets or returns the content of the selected element //return content $(selector).html() // set content $(selector).html(content)
   });
 });
 
