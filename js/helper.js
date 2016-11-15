@@ -59,6 +59,8 @@ var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
+
+
 /*
 The Internationalize Names challenge found in the lesson Flow Control from JavaScript Basics requires you to create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
@@ -97,6 +99,12 @@ $(document).click(function(loc) {
 
 
 
+// DAN NOTE: maps object is stored within a global "google" object  - this creates the scope for all google objects
+// you create a new map object using the constructor Map() - this constructor is part of the maps object (e.g. "google.maps.etc"....) - the maps object is a property of the google object
+// the Map() constructor takes 2 parameters: 1. the element that the map will appear inside 2. the MapOptions object that provides the details for the type etc.....
+
+
+
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
@@ -121,6 +129,10 @@ function initializeMap() {
   appended to #mapDiv in resumeBuilder.js.
   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+
+
+
+
 
 
   /*
@@ -150,9 +162,14 @@ function initializeMap() {
     work.jobs.forEach(function(job){
       locations.push(job.location);
     });
-
+ 
     return locations;
   }
+
+
+
+
+
 
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
@@ -195,6 +212,11 @@ function initializeMap() {
     map.setCenter(bounds.getCenter());
   }
 
+
+
+
+
+
   /*
   callback(results, status) makes sure the search returned results for a location.
   If so, it creates a new map marker for that location.
@@ -204,6 +226,11 @@ function initializeMap() {
       createMapMarker(results[0]);
     }
   }
+
+
+
+
+
 
   /*
   pinPoster(locations) takes in the array of locations created by locationFinder()
@@ -240,16 +267,22 @@ function initializeMap() {
 
 }
 
+
+
+
+
+
+
 /*
 Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
-  //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+window.addEventListener('resize', function(e) {
+  // Make sure the map bounds get updated on page resize
+ map.fitBounds(mapBounds);
+});
